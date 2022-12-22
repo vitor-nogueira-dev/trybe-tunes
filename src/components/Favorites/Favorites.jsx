@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
-import MusicCard from '../components/MusicCard';
+import Header from '../Header/Header';
+import MusicCard from '../MusicCard/MusicCard';
 import {
   getFavoriteSongs,
   removeSong,
 } from '../services/favoriteSongsAPI';
-import Carregando from './Carregando';
+import Carregando from '../Carregando/Carregando';
+import { Container, Div } from "./style"
 
 export default class Favorites extends Component {
   state = {
@@ -20,7 +21,7 @@ export default class Favorites extends Component {
     });
   }
 
-  handleClick = async ({ target: { checked, id } }) => {
+  handleClick = ({ target: { checked, id } }) => {
     console.log(checked);
     const { musics } = this.state;
     console.log(musics, id);
@@ -37,22 +38,21 @@ export default class Favorites extends Component {
 
   render() {
     const { musics, loading } = this.state;
-    // console.log(arrayMusic);
     return (
-      <div data-testid="page-favorites">
-        <Header />
+      <Container><Header />
+        <Div>
         {loading ? (
           <Carregando />
         ) : (
           musics.map((music) => (
             <MusicCard
-              music={ music }
-              key={ music.trackId }
-              handleClick={ this.handleClick }
-            />
+              music={music}
+              key={music.trackId}
+              handleClick={this.handleClick} />
           ))
-        )}
-      </div>
+          )}
+          </Div>
+      </Container>
     );
   }
 }
