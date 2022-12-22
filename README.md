@@ -1,4 +1,6 @@
 ## Projeto Trybe Tunes 🎧
+
+![alt text](/public//trybeTunes.gif)
 ---
 Acesse aqui [Trybe Tunes](https://trybetunes-vn.netlify.app/) ✅
 
